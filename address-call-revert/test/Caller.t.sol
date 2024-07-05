@@ -11,11 +11,15 @@ contract CounterTest is Test {
 
     function setUp() public {
         _terminus = new Terminus();
-        _caller = new Caller();
+        _caller = new Caller(_terminus);
     }
 
     function test_revert_callValue() public {
+        bytes memory expectedError = abi.encodeWithSignature("Error(string)", "Receive: Ether not accepted");
 
-        //TODO
+        (bool success, bytes memory result) = _caller.callReceive();
+
+        assertFalse(success, "Call should fail");
+        assertEq(result, expectedError, "Error string mismatch");
     }
 }

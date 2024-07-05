@@ -10,8 +10,8 @@ contract Caller {
         _endpoint = endpoint;
     }
 
-    function callValue() external payable {
-
-        //TODO call
+    // Calls the Terminus with the given msg.value, without any msg.data
+    function callReceive() external payable returns (bool success, bytes memory result){
+        (success, result) = address(_endpoint).call{value: msg.value}("");
     }
 }
