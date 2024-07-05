@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity 0.8.26;
 
-import {Terminus} from "./Terminus.sol";
+import {RevertingTerminus} from "./RevertingTerminus.sol";
 
 contract Caller {
-    Terminus private _endpoint;
+    RevertingTerminus private _endpoint;
 
-    constructor(Terminus endpoint){
+    constructor(RevertingTerminus endpoint){
         _endpoint = endpoint;
     }
 
